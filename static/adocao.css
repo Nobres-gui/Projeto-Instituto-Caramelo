@@ -1,0 +1,106 @@
+.container__pagAdocao {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--cor-marrom);
+  width: 100%;
+  gap: 20px;
+  height: 90vh;
+  overflow: hidden;
+}
+
+.container__pagAdocao-img {
+  width: 31em;
+}
+
+.pagAdocao-img {
+    position: absolute;
+    right: 49em;
+    top: 1em;
+}
+
+.container__pagAdocao-titulo {
+  font-size: 40px;
+  width: 16em;
+  color: var(--cor-amareloEscuro);
+  font-weight: var(--font-weight);
+}
+
+.container__pagAdocao-lista{
+  margin: 5em 4em;
+  display: flex;
+  flex-direction: column;
+  gap: 3em;
+}
+
+
+.pagAdocao__titulo-listaAnimais{
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.pagAdocao__titulo-listaAnimais h1{
+  font-size: 40px;
+  color: var(--cor-vinhoEscuro);
+  font-weight: var(--font-weight);
+}
+
+.pagAdocao__lista-adicionar{
+  background-color: var(--cor-vinhoEscuro);
+  color: var(--cor-branca);
+  padding: 0.5em 1.5em;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+
+.pagAdocao__container-cards{
+  display: flex;
+  gap: 6em;
+ 
+}
+
+.pagAdocao__container-filtro{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  color: var(--cor-vinhoEscuro);
+  font-size: 25px;
+}
+
+.pagAdocao__container-filtro h3{
+  font-size: 23px;
+}
+
+.container-filtro{
+  display: flex;
+  flex-direction: column;
+}
+.container-filtro label{
+  font-size: 18px;
+}
+.container__cards{
+ display: flex;
+  flex-wrap: wrap;
+  gap: 3em;
+}
+
+.pagAdocao__container-card{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 20em;
+  height: 20em;
+  border: 3px solid var(--cor-vinhoEscuro);
+  border-radius: 20px;
+  gap: 15px;
+}
+
+.pagAdocao__container-card button{
+  color: var(--cor-branca);
+  background-color: var(--cor-vinhoEscuro);
+  border: none;
+  border-radius: 3px;
+  padding: 0.5em 5em;
+}

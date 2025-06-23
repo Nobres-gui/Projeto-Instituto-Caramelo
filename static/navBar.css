@@ -1,0 +1,52 @@
+
+.container__navBar{
+display: flex;
+justify-content: space-between;
+align-items: center;
+padding: 0.6em 5em;
+background-color: var(--cor-amareloClaro);
+}
+
+.navBar-layout2{
+    justify-content: center;
+    padding: 0.15em 5em;
+}
+
+.container__navBar-lista{
+    display: flex;
+    gap: 2em;
+}
+
+.navBar__lista-item{
+    font-family: var(--font);
+    font-weight: bold;
+}
+
+.lista__item-link{
+    color: var(--cor-marrom);
+    text-decoration: none;
+}
+
+.lista__item-imgLink{}
+
+.container__navBar-login{
+    display: flex;
+    gap: 10px;
+}
+
+.lista__item-botao{
+    /* border: 2px solid black; */
+    border-radius: 5px;
+    color: var(--cor-amareloClaro);
+    padding: 8px;
+    background-color: var(--cor-marrom);
+    /* background-color: transparent; */
+}
+
+.lista__item-botao:hover{
+    background-color: var(--cor-vinhoEscuro);
+}
+
+.container__navBar-img{
+    width: 10.1em;
+}

@@ -1,0 +1,245 @@
+{% extends "template.html" %} {% block conteudo %}
+<input type="hidden" name="funcionario" value="{{funcionario}}" />
+<header>
+  <div class="container__navBar">
+    <img
+      class="container__navBar-img"
+      src="../static/img/navBar/Logo NavBar.svg"
+      alt="#"
+    />
+    <ul class="container__navBar-lista">
+      <li class="navBar__lista-item">
+        <a href="{{ url_for('index') }}" class="lista__item-link"> Início </a>
+      </li>
+      <li class="navBar__lista-item">
+        <a href="{{ url_for('adocao') }}" class="lista__item-link"> Adote </a>
+      </li>
+      <li class="navBar__lista-item">
+        <a href="" href="" class="lista__item-link"> Instituição </a>
+      </li>
+      <li class="navBar__lista-item">
+        <a href="" href="" class="lista__item-link"> Parceiros </a>
+      </li>
+    </ul>
+
+    <ul class="container__navBar-login">
+      <!-- <li class="navBar__lista-item">
+        <a href="" href="" class="lista__item-link">
+          <i class="fa-regular fa-circle-user item__link-img"></i>
+        </a>
+      </li> -->
+      <li class="navBar__lista-item">
+        <a
+          href="{{ url_for('login') }}"
+          class="lista__item-link lista__item-botao"
+        >
+          Login
+        </a>
+      </li>
+      <li class="navBar__lista-item">
+        <a
+          href="{{ url_for('cadastro') }}"
+          class="lista__item-link lista__item-botao"
+        >
+          Sing-up
+        </a>
+      </li>
+    </ul>
+  </div>
+</header>
+
+<main>
+  <div class="container__pagAdocao">
+    <div class="container__pagAdocao-img">
+      <img
+        class="pagAdocao-img"
+        src="../static/img/pagAdocao/Adotantes.svg"
+        alt=""
+      />
+    </div>
+    <div class="conteiner__pagAdocao-filha">
+      <p class="container__pagAdocao-titulo">
+        Bem-vindo (a) <br />
+        Adotar é um ato de amor que transforma todas as vidas ao redor. <br />
+        Aqui você pode encontrar p o novo (a) membro da sua família.
+      </p>
+    </div>
+  </div>
+
+  <div class="container__pagAdocao-lista">
+    <div class="container__popup-AdicionarAnimal">
+      <div id="meuPopup" class="popup">
+        <span class="close-popup">x</span>
+        <div class="popup-content">
+          <form
+          class="popup__container-formulario"
+          method="post"
+          action="{{url_for('novoAnimal')}}"
+          enctype="multipart/form-data"
+          >
+          <figure class="img-thumbnail col-md-4 formularioImagem">
+            <img
+              class="img-fluid"
+              src="{{url_for('imagem', nome_arquivo='capa_padrao.jpg')}}"
+              alt=""
+            />
+            <figcaption>
+              <label class="popup__form-button" for="">
+                Adicionar foto
+                <input type="file" name="Img-arq" accept=".jpg, .png" />
+              </label>
+            </figcaption>
+          </figure>
+          <div class="container-labels">
+
+            {{form.csrf_token()}}
+            <div>
+              {{form.nome.label}}: <br />
+              {{form.nome(class="popup__form-input")}}
+            </div>
+            <div>
+              {{form.idade.label}}: <br />
+              {{form.idade(class="popup__form-input")}}
+            </div>
+            <div>
+              {{form.tipo.label}}: <br />
+              {{form.tipo(class="popup__form-input")}}
+            </div>
+            <div>
+              {{form.sexo.label}}: <br />
+              {{form.sexo(class="popup__form-input")}}
+            </div>
+            <div>
+              {{form.descricao.label}}: <br />
+              {{form.descricao(class="popup__form-input")}}
+            </div>
+            {{ form.adicionar(class="popup__form-button") }}
+          </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="pagAdocao__titulo-listaAnimais">
+      <h1>Conheça os animais</h1>
+      <div>
+        <a id="popupLink" class="pagAdocao__lista-adicionar"> +Adicionar </a>
+      </div>
+    </div>
+
+    <div class="pagAdocao__container-cards">
+      <div class="pagAdocao__container-filtro">
+        <h1>Filtros</h1>
+        <div class="container-filtro">
+          <h3>Animais</h3>
+          <label for="checkCachorro">
+            <input type="checkbox" name="checkCachorro" />
+            Cachorro
+          </label>
+
+          <label for="checkGato">
+            <input type="checkbox" name="checkGato" />
+            Gato
+          </label>
+
+          <label for="checkPassaro">
+            <input type="checkbox" name="checkPassaro" />
+            Passaro
+          </label>
+
+          <h3>Sexo</h3>
+          <label for="checkMacho">
+            <input type="checkbox" name="checkMacho" />
+            Macho
+          </label>
+
+          <label for="checkFêmea">
+            <input type="checkbox" name="checkFêmea" />
+            Fêmea
+          </label>
+        </div>
+      </div>
+
+      <div class="container__cards">
+        {% for animal in animais %}
+        <div class="pagAdocao__container-card">
+          <img src="{{url_for('imagem', nome_arquivo=foto_Animal)}}" alt="Foto {{animal.nome}}" style="width: 10em;"/>
+          <input
+            type="hidden"
+            id="id_{{animal.nome}}"
+            value="Animal{{animal.id}}"
+          />
+          <button onclick="mostrarDescricao({{animal.nome}})">
+            Conheça {{animal.nome}}
+          </button>
+          </div>
+
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="container__pag5">
+    <div class="container__pag5-texto">
+      <h1>Fale com a Gente</h1>
+
+      <p>
+        Tem alguma crítica, dúvida ou até quer se juntar a essa iniciativa?
+        <br />
+        Mande uma mensagem!
+      </p>
+
+      <a href="">Enviar</a>
+    </div>
+  </div>
+
+  <div class="container__pag6">
+    <div class="container__pag6-botao">
+      <a href="">Voltar ao ínicio</a>
+    </div>
+
+    <div class="container__pag6-texto">
+      <img src="./assets/index/Logo NavBar.svg" alt="" />
+      <a class="container__pag6-linkctt" href="">Contato</a>
+
+      <div class="container__pag6-icones">
+        <a href="">
+          <i class="fa-brands fa-instagram"></i>
+        </a>
+        <a href="">
+          <i class="fa-brands fa-square-facebook"></i>
+        </a>
+      </div>
+      <p class="container__pag6-copy">
+        Instituto Caramelo0 ® 2025. Todos os direitos reservados
+      </p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  var listaAnimais = "{{ listaAnimais }}";
+  console.log(listaAnimais);
+
+  const funcionario = "{{ funcionario }}";
+  console.log(`É funcionario? ${funcionario}`);
+
+  var link = document.getElementById("popupLink");
+  var popup = document.getElementById("meuPopup");
+  var span = document.getElementsByClassName("close-popup")[0];
+
+  if (funcionario == "não") {
+    link.style.display = "none";
+  } else {
+    link.style.display = "flex";
+  }
+
+  link.onclick = function () {
+    popup.style.display = "flex";
+  };
+  span.onclick = function () {
+    popup.style.display = "none";
+  };
+</script>
+{% endblock %}

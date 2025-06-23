@@ -1,0 +1,145 @@
+{% extends "template.html" %} {% block conteudo %}
+<header>
+  <div class="container__navBar">
+    <img class="container__navBar-img" src="../static/img/navBar/Logo NavBar.svg" alt="#" />
+    <ul class="container__navBar-lista">
+      <li class="navBar__lista-item">
+        <a href="{{ url_for('index') }}"" class="lista__item-link"> Início </a>
+      </li>
+      <li class="navBar__lista-item">
+        <a href="{{ url_for('adocao') }}"" class="lista__item-link"> Adote </a>
+      </li>
+      <li class="navBar__lista-item">
+        <a href="" href="" class="lista__item-link"> Instituição </a>
+      </li>
+      <li class="navBar__lista-item">
+        <a href="" href="" class="lista__item-link"> Parceiros </a>
+      </li>
+    </ul>
+    
+    <ul class="container__navBar-login">
+      <!-- <li class="navBar__lista-item">
+        <a href="" href="" class="lista__item-link">
+          <i class="fa-regular fa-circle-user item__link-img"></i>
+        </a>
+      </li> -->
+      <li class="navBar__lista-item">
+        <a href="{{ url_for('login') }}" class="lista__item-link  lista__item-botao"> Login </a>
+      </li>
+      <li class="navBar__lista-item">
+        <a href="{{ url_for('cadastro') }}" class="lista__item-link lista__item-botao"> Sing-up </a>
+      </li>
+    </ul>
+  </div>
+</header>
+
+<main>
+  <div class="container__pag1">
+    <div>
+      <img
+        class="container__pag1-img"
+        src="../static/img/index/Logo pg1.png"
+        alt=""
+      />
+    </div>
+
+    <div class="conteiner__pag1-filha">
+      <p class="container__pag1-titulo">
+        Nós acreditamos que todo animal merece uma família
+      </p>
+      <a class="container__pag1-link" href="#">ADOTE JÁ</a>
+    </div>
+  </div>
+
+  <div class="container__pag2">
+    <div class="container__pag2-filha">
+      <img src="../static/img/index/Logo pg1.png" alt="" />
+      <p>Insira um texto</p>
+      <a href="">Adote</a>
+    </div>
+
+    <img src="../static/img/index/Diviisoria.png" alt="" />
+
+    <div class="container__pag2-filha">
+      <img src="../static/img/index/Logo pg1.png" alt="" />
+      <p>Insira um texto</p>
+      <a href="">Patrocinadores</a>
+    </div>
+  </div>
+
+  <div class="container__pag3">
+    <div class="container__pag3-filha">
+      <h1>Sobre o Instituto</h1>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa odio nostrum aperiam accusantium cumque dignissimos sint! Tempora doloremque possimus eum nesciunt fugit doloribus quaerat, unde molestiae, officiis blanditiis quia aspernatur? <br>
+        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quae tenetur voluptate est quisquam dolores ipsa. Impedit, consequatur modi consequuntur quibusdam dolore unde consectetur hic illum, architecto vitae perferendis atque libero. <br>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore quam dolorem sunt quae et illum modi repellendus consequatur id praesentium, aliquid itaque facere quisquam cupiditate consectetur optio illo? Voluptate, enim.
+      </p>
+    </div>
+     <img class="container__pag3-img" src="../static/img/index/imgs.png" alt="">
+
+  </div>
+
+   <div class="container__pag4">
+           <div class="container__pag4-texto">
+             <h1>Patrocinadores</h1>
+            <p>
+                Graças as doações delas, oferecemos uma estrutura de qualidade e todo cuidado que nossos resgatados precisam para recomeçar.
+            </p>
+            </div>
+
+            <div class="container__pag4-filha">
+                <img src="../static/img/index/byd.webp" alt="">
+                <img src="../static/img/index/papapets.webp" alt="">
+                <img src="../static/img/index/protejaPet.webp" alt="">
+                <img src="../static/img/index/winguard.webp" alt="">
+
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container__pag5">
+            <div class="container__pag5-texto">
+               <h1>Fale com a Gente </h1>
+        
+               <p>Tem alguma crítica, dúvida ou até quer se juntar a essa iniciativa? <br> Mande uma mensagem!</p>
+        
+               <a href="">Enviar</a>
+            </div>
+         </div>
+
+        <div class="container__pag6">
+            <div class="container__pag6-botao">
+                <a href="">Voltar ao ínicio</a>
+            </div>
+
+             <div class="container__pag6-texto" >
+                <img src="./assets/index/Logo NavBar.svg" alt="">
+                <a class="container__pag6-linkctt"   href="">Contato</a>
+
+                <div class="container__pag6-icones">
+                    <a href="">
+                        <i class="fa-brands fa-instagram"></i>
+                    </a>
+                    <a href="">
+                        <i class="fa-brands fa-square-facebook"></i>
+                    </a>
+                </div>
+                <p class="container__pag6-copy">@copy;2025 Instituto Caramelo. Todos os direitos reservados</p>
+            </div>
+
+
+
+        </div>
+
+    </footer>
+</main>
+<script>
+   const funcionario = "{{ funcionario }}";
+   
+   console.log(funcionario)
+</script>
+
+
+{% endblock %}

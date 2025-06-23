@@ -1,0 +1,202 @@
+.container__pag1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--cor-marrom);
+    width: 100%;
+    gap: 20px;
+    height: 90vh;
+}
+
+.conteiner__pag1-filha {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.container__pag1-titulo {
+    font-size: 40px;
+    width: 12em;
+    color: var(--cor-amareloEscuro);
+    font-weight: 600;
+}
+
+.container__pag1-link {
+    color: var(--cor-branca);
+    text-decoration: none;
+    padding: 1em 11.5em;
+    background-color: var(--cor-amareloEscuro);
+    border-radius: 5px;
+}
+.container__pag2{
+    background: var(--cor-vinhoEscuro);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 100vh;
+}
+.container__pag2 img{
+    width: 2em;
+}
+
+.container__pag2-filha{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 3px solid var(--cor-vinhoClaro);
+    border-radius: 15px;
+    width: 25em;
+    height: 28em;
+    gap: 10px;
+}
+
+.container__pag2-filha img{
+    width: 15em;
+}
+.container__pag2-filha p{
+    color: var(--cor-branca);
+}
+.container__pag2-filha a{
+    color: var(--cor-branca);
+    text-decoration: none;
+    padding: 0.5em 2em;
+    background-color: var(--cor-amareloEscuro);
+    border-radius: 5px;
+}
+
+.container__pag3{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: var(--cor-marrom);
+    padding: 0 0 4em 0;
+}
+
+.container__pag3-filha{
+    position: relative;
+    right: 14em;
+    top: 14.5em;
+    width: 48em;
+    text-align: justify;
+    color: var(--cor-branca);
+}
+.container__pag3-filha h1{
+ font-size: 40px;
+}
+.container__pag3-img{
+    width: 80%;
+}
+
+.container__pag4 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 65vh;
+    gap: 25px;
+}
+
+.container__pag4-texto {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    color: var(--cor-vinhoClaro);
+}
+
+.container__pag4-texto h1 {
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.container__pag4-texto p {
+    font-size: 20px;
+    width: 30em;
+    text-align: center;
+}
+
+.container__pag4-filha img {
+    width: 10em;
+    height: 10em;
+    border: 2px solid var(--cor-vinhoClaro);
+    border-radius: 100%;
+}
+.container__pag5{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    background-color: var(--cor-vinhoClaro);
+    height: 40vh;
+    font-family: var(--font);
+    text-align: center;
+    font-size: 20px;
+    color: var(--cor-branca);
+}
+
+.container__pag5-texto{
+    display: flex;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    }
+
+
+.container__pag5-texto a {
+    color: var(--cor-branca);
+    text-decoration: none;
+    padding: 0.5em 8em;
+    background-color: var(--cor-amareloEscuro);
+    border-radius: 5px;
+}
+.container__pag6{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--cor-marrom);
+    height: 40vh;
+    font-family: var(--font);
+    text-align: center;
+    font-size: 20px;
+    color: var(--cor-branca);
+}
+.container__pag6-botao a{
+    position: relative;
+    left: 40em;
+    top: 2em;
+    width: 8em;
+    font-size: 14px;
+    color: black;
+    text-decoration: none;
+    padding: 0.5em 1em;
+    background-color: var(--cor-amareloEscuro);
+    border-radius: 5px;
+}
+.container__pag6-texto{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.container__pag6-linkctt{
+    color: black;
+    text-decoration: none;
+    padding: 0.5em 2em;
+    background-color: var(--cor-amareloEscuro);
+    border-radius: 5px;
+    align-items: center;
+}
+.container__pag6-icones a{
+    color: black;
+
+}
+.container__pag6-copy{
+    font-size: 15px;
+    color: black;
+}

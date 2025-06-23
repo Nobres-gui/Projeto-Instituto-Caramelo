@@ -1,0 +1,49 @@
+{% extends "template.html" %} {% block conteudo %}
+
+<header>
+  <div class="container__navBar navBar-layout2">
+    <img
+      class="container__navBar-img"
+      src="../static/img/login/Logo.png"
+      alt="Logo Instituição Caramelo"
+    />
+  </div>
+</header>
+
+<main class="container_secao">
+  <div class="container__botao">
+    <a class="botao__voltar" href="{{ url_for('index') }}">
+      <h3 class="botao__voltar-titulo">Voltar</h3>
+      <img
+        class="botao__voltar-seta"
+        src="../static/img/login/Seta.svg"
+        alt="Seta Voltar"
+      />
+    </a>
+  </div>
+  <form
+    class="form"
+    action="{{url_for('autenticar')}}"
+    method="POST"
+  >
+    <input type="hidden" name="proxima" value="{{proxima}}" />
+      {{form.csrf_token()}}
+    <div class="form__container">
+      <h2>Login</h2>
+      <div>
+        {{form.email.label}} <br />
+        {{form.email}}
+      </div>
+      <div>
+        {{form.senha.label}} <br />
+        {{form.senha(type="password")}}
+      </div>
+      <button class="form__login-button" type="subimit">Login</button>
+      <p class="form__link-redirecionamento">
+        Ainda não tem cadastro?
+        <a href="{{ url_for('cadastro') }}">Sing up</a>
+      </p>
+    </div>
+  </form>
+</main>
+{% endblock %}

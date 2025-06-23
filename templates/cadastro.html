@@ -1,0 +1,53 @@
+{% extends "template.html" %} {% block conteudo %}
+<header>
+  <div class="container__navBar navBar-layout2">
+    <img
+      class="container__navBar-img"
+      src="../static/img/login/Logo.png"
+      alt="Logo Instituição Caramelo"
+    />
+  </div>
+</header>
+
+<main class="container_secao">
+  <div class="container__botao">
+    <a class="botao__voltar" href="{{ url_for('index') }}">
+      <h3 class="botao__voltar-titulo">Voltar</h3>
+      <img
+        class="botao__voltar-seta"
+        src="../static/img/login/Seta.svg"
+        alt="Seta Voltar"
+      />
+    </a>
+  </div>
+  <form
+    class="form"
+    name="formLogin"
+    action="{{url_for('criarUsuario')}}"
+    method="post"
+  >
+  {{form.csrf_token()}}
+    <div class="form__container form__container-layout2">
+      <h2>Cadastro</h2>
+      <div>
+        {{ form.nome.label }} <br />
+        {{ form.nome }}
+      </div>
+      <div>
+        {{ form.email.label }} <br />
+        {{ form.email }}
+      </div>
+      <div>
+        {{ form.senha.label }} <br />
+        {{ form.senha(type="password") }}
+      </div>
+
+      <button class="form__login-button" type="subimit">Cadastar</button>
+      <p class="form__link-redirecionamento">
+        Já tem cadastro?
+        <a href="{{ url_for('login') }}">Login</a>
+      </p>
+    </div>
+  </form>
+</main>
+{% endblock %}
