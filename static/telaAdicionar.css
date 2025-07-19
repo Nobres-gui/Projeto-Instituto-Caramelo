@@ -49,7 +49,18 @@
 }
 
 .formularioImagem img {
-  width: 260px;
+    max-width: 260px;
+    max-height: 345px;
+    width: auto;
+    height: auto;
+}
+
+.popup__button-adicionar {
+  border: none;
+  border-radius: 5px;
+  background-color: var(--cor-vinhoClaro);
+  padding: 0.5em 4.55em;
+  color: var(--cor-branca);
 }
 
 .popup__form-button {
@@ -58,6 +69,8 @@
   background-color: var(--cor-vinhoClaro);
   padding: 0.5em 4.55em;
   color: var(--cor-branca);
+  position: fixed;
+  left: 22em;
 }
 
 .popup__form-button [type="file"] {
@@ -66,7 +79,8 @@
   filter: alpha(opacity=0);
   opacity: 0;
   position: absolute;
-  bottom: 85px;
+  left: 0em;
+  bottom: 0em;
   width: 19.5em;
   height: 2.67em;
 }

@@ -1,24 +1,27 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat+Alternates:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Montserrat+Alternates:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 @import url(navBar.css);
+@import url(menuUsuario.css);
 @import url(login.css);
 @import url(adocao.css);
 @import url(telaAdicionar.css);
 @import url(index.css);
 
-:root{
-    --cor-marrom: #A65D53;
-    --cor-branca: #ffffff;
-    --cor-vinhoClaro: #910F43;
-    --cor-vinhoEscuro: #63072C; 
-    --cor-amareloEscuro: #D59500;
-    --cor-amareloClaro: #F7F7A1;
+:root {
+  --cor-marrom: #a65d53;
+  --cor-branca: #ffffff;
+  --cor-vinhoClaro: #910f43;
+  --cor-vinhoEscuro: #63072c;
+  --cor-amareloEscuro: #d59500;
+  --cor-amareloClaro: #f7f7a1;
 
-
-    --font: "Montserrat Alternates", sans-serif;
-    --font-weight: 600;
+  --font: "Montserrat Alternates", sans-serif;
+  --font-weight: 600;
 }
 
-*{
-    font-family: var(--font);
-    
+* {
+  font-family: var(--font);
+}
+
+html {
+  scroll-behavior: smooth;
 }

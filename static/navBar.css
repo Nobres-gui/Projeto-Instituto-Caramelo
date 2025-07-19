@@ -27,7 +27,6 @@ background-color: var(--cor-amareloClaro);
     text-decoration: none;
 }
 
-.lista__item-imgLink{}
 
 .container__navBar-login{
     display: flex;

@@ -1,39 +1,57 @@
 {% extends "template.html" %} {% block conteudo %}
-<header>
-  <div class="container__navBar">
-    <img class="container__navBar-img" src="../static/img/navBar/Logo NavBar.svg" alt="#" />
-    <ul class="container__navBar-lista">
-      <li class="navBar__lista-item">
-        <a href="{{ url_for('index') }}"" class="lista__item-link"> Início </a>
+<input type="hidden" name="funcionario" value="{{funcionario}}" />
+<input type="hidden" name="logado" value="{{ logado }}" />
+<header style="
+    position: relative;
+    z-index: 1000;
+    ">
+      <div class="container__navBar">
+        <img class="container__navBar-img" src="../static/img/navBar/Logo NavBar.svg" alt="#" />
+        <ul class="container__navBar-lista">
+          <li class="navBar__lista-item">
+        <a href="{{ url_for('index') }}" class="lista__item-link"> Início </a>
       </li>
       <li class="navBar__lista-item">
-        <a href="{{ url_for('adocao') }}"" class="lista__item-link"> Adote </a>
+        <a href="{{ url_for('adocao') }}" class="lista__item-link"> Adote </a>
       </li>
-      <li class="navBar__lista-item">
-        <a href="" href="" class="lista__item-link"> Instituição </a>
-      </li>
-      <li class="navBar__lista-item">
-        <a href="" href="" class="lista__item-link"> Parceiros </a>
-      </li>
-    </ul>
+          <li class="navBar__lista-item">
+            <a href="{{ url_for('index')}}#instituicao" href="" class="lista__item-link"> Instituição </a>
+          </li>
+          <li class="navBar__lista-item">
+            <a href="{{ url_for('index')}}#parceiros" class="lista__item-link"> Parceiros </a>
+          </li>
+        </ul>
     
-    <ul class="container__navBar-login">
-      <!-- <li class="navBar__lista-item">
-        <a href="" href="" class="lista__item-link">
-          <i class="fa-regular fa-circle-user item__link-img"></i>
-        </a>
-      </li> -->
-      <li class="navBar__lista-item">
-        <a href="{{ url_for('login') }}" class="lista__item-link  lista__item-botao"> Login </a>
-      </li>
-      <li class="navBar__lista-item">
-        <a href="{{ url_for('cadastro') }}" class="lista__item-link lista__item-botao"> Sing-up </a>
-      </li>
-    </ul>
-  </div>
-</header>
+    
+        <div class="icon__user">
+          <input type="checkbox" id="menu" class="icon__user-botao">
+          <label for="menu" class="container__rotulo">
+            <i  class="fa-regular fa-circle-user"></i>
+          </label>
+          
+          <ul class="user_menu">
+            <li class="user_menu__titulo">Usuário</li>
+            <li class="user_menu__item">
+              <a href="" class="user_menu__link">Adoções</a>
+            </li>
+            <li class="user_menu__item">
+              <a href="{{url_for('logout')}}" class="user_menu__link">Sair</a>
+            </li>
+          </ul>
+        </div>
 
-<main>
+        <ul class="container__navBar-login">
+           <li class="navBar__lista-item">
+        <a href="{{ url_for('login', proxima = 'index') }}" class="lista__item-link  lista__item-botao"> Login </a>
+      </li>
+      <li class="navBar__lista-item">
+        <a href="{{ url_for('cadastro') }}" class="lista__item-link lista__item-botao"> Cadastro </a>
+      </li>
+        </ul>
+      </div>
+    </header>
+
+<main >
   <div class="container__pag1">
     <div>
       <img
@@ -68,8 +86,8 @@
   </div>
 
   <div class="container__pag3">
-    <div class="container__pag3-filha">
-      <h1>Sobre o Instituto</h1>
+    <div id="instituicao" class="container__pag3-filha">
+      <h1 >Sobre o Instituto</h1>
       <p>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa odio nostrum aperiam accusantium cumque dignissimos sint! Tempora doloremque possimus eum nesciunt fugit doloribus quaerat, unde molestiae, officiis blanditiis quia aspernatur? <br>
         Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quae tenetur voluptate est quisquam dolores ipsa. Impedit, consequatur modi consequuntur quibusdam dolore unde consectetur hic illum, architecto vitae perferendis atque libero. <br>
@@ -80,8 +98,8 @@
 
   </div>
 
-   <div class="container__pag4">
-           <div class="container__pag4-texto">
+   <div id="parceiros" class="container__pag4">
+           <div  class="container__pag4-texto">
              <h1>Patrocinadores</h1>
             <p>
                 Graças as doações delas, oferecemos uma estrutura de qualidade e todo cuidado que nossos resgatados precisam para recomeçar.
@@ -111,7 +129,7 @@
 
         <div class="container__pag6">
             <div class="container__pag6-botao">
-                <a href="">Voltar ao ínicio</a>
+                <a href="{{url_for('index')}}#pagina__inicial">Voltar ao ínicio</a>
             </div>
 
              <div class="container__pag6-texto" >
@@ -136,10 +154,9 @@
     </footer>
 </main>
 <script>
-   const funcionario = "{{ funcionario }}";
-   
-   console.log(funcionario)
+  const usuarioLogado = "{{ session['usuario_logado'] }}";
 </script>
+<script src="{{ url_for('static', filename='usuarioLogado.js') }}"></script>
 
 
 {% endblock %}

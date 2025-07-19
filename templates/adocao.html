@@ -1,6 +1,5 @@
 {% extends "template.html" %} {% block conteudo %}
-<input type="hidden" name="funcionario" value="{{funcionario}}" />
-<header>
+<header style="position: relative; z-index: 1000">
   <div class="container__navBar">
     <img
       class="container__navBar-img"
@@ -9,25 +8,39 @@
     />
     <ul class="container__navBar-lista">
       <li class="navBar__lista-item">
-        <a href="{{ url_for('index') }}" class="lista__item-link"> Início </a>
+        <a href="{{ url_for('index')}}" class="lista__item-link"> Início </a>
       </li>
       <li class="navBar__lista-item">
         <a href="{{ url_for('adocao') }}" class="lista__item-link"> Adote </a>
       </li>
       <li class="navBar__lista-item">
-        <a href="" href="" class="lista__item-link"> Instituição </a>
+        <a href="{{ url_for('index')}}#instituicao" href="" class="lista__item-link">
+          Instituição
+        </a>
       </li>
       <li class="navBar__lista-item">
-        <a href="" href="" class="lista__item-link"> Parceiros </a>
+        <a href="{{ url_for('index')}}#parceiros" class="lista__item-link"> Parceiros </a>
       </li>
     </ul>
 
+    <div class="icon__user">
+      <input type="checkbox" id="menu" class="icon__user-botao" />
+      <label for="menu" class="container__rotulo">
+        <i class="fa-regular fa-circle-user"></i>
+      </label>
+
+      <ul class="user_menu">
+        <li class="user_menu__titulo">Usuário</li>
+        <li class="user_menu__item">
+          <a href="" class="user_menu__link">Adoções</a>
+        </li>
+        <li class="user_menu__item">
+          <a href="{{url_for('logout')}}" class="user_menu__link">Sair</a>
+        </li>
+      </ul>
+    </div>
+
     <ul class="container__navBar-login">
-      <!-- <li class="navBar__lista-item">
-        <a href="" href="" class="lista__item-link">
-          <i class="fa-regular fa-circle-user item__link-img"></i>
-        </a>
-      </li> -->
       <li class="navBar__lista-item">
         <a
           href="{{ url_for('login') }}"
@@ -41,7 +54,7 @@
           href="{{ url_for('cadastro') }}"
           class="lista__item-link lista__item-botao"
         >
-          Sing-up
+          Cadastro
         </a>
       </li>
     </ul>
@@ -72,49 +85,48 @@
         <span class="close-popup">x</span>
         <div class="popup-content">
           <form
-          class="popup__container-formulario"
-          method="post"
-          action="{{url_for('novoAnimal')}}"
-          enctype="multipart/form-data"
+            class="popup__container-formulario"
+            method="post"
+            action="{{url_for('novoAnimal')}}"
+            enctype="multipart/form-data"
           >
-          <figure class="img-thumbnail col-md-4 formularioImagem">
-            <img
-              class="img-fluid"
-              src="{{url_for('imagem', nome_arquivo='capa_padrao.jpg')}}"
-              alt=""
-            />
-            <figcaption>
-              <label class="popup__form-button" for="">
-                Adicionar foto
-                <input type="file" name="Img-arq" accept=".jpg, .png" />
-              </label>
-            </figcaption>
-          </figure>
-          <div class="container-labels">
-
-            {{form.csrf_token()}}
-            <div>
-              {{form.nome.label}}: <br />
-              {{form.nome(class="popup__form-input")}}
+            <figure class="img-thumbnail col-md-4 formularioImagem">
+              <img
+                class="img-fluid"
+                src="{{url_for('imagem', nome_arquivo='capa_padrao.jpg')}}"
+                alt=""
+              />
+              <figcaption>
+                <label class="popup__form-button" for="">
+                  Adicionar foto
+                  <input type="file" name="Img-arq" accept=".jpg, .png" />
+                </label>
+              </figcaption>
+            </figure>
+            <div class="container-labels">
+              {{form.csrf_token()}}
+              <div>
+                {{form.nome.label}}: <br />
+                {{form.nome(class="popup__form-input")}}
+              </div>
+              <div>
+                {{form.idade.label}}: <br />
+                {{form.idade(class="popup__form-input")}}
+              </div>
+              <div>
+                {{form.tipo.label}}: <br />
+                {{form.tipo(class="popup__form-input")}}
+              </div>
+              <div>
+                {{form.sexo.label}}: <br />
+                {{form.sexo(class="popup__form-input")}}
+              </div>
+              <div>
+                {{form.descricao.label}}: <br />
+                {{form.descricao(class="popup__form-input")}}
+              </div>
+              {{ form.adicionar(class="popup__button-adicionar") }}
             </div>
-            <div>
-              {{form.idade.label}}: <br />
-              {{form.idade(class="popup__form-input")}}
-            </div>
-            <div>
-              {{form.tipo.label}}: <br />
-              {{form.tipo(class="popup__form-input")}}
-            </div>
-            <div>
-              {{form.sexo.label}}: <br />
-              {{form.sexo(class="popup__form-input")}}
-            </div>
-            <div>
-              {{form.descricao.label}}: <br />
-              {{form.descricao(class="popup__form-input")}}
-            </div>
-            {{ form.adicionar(class="popup__form-button") }}
-          </div>
           </form>
         </div>
       </div>
@@ -162,7 +174,11 @@
       <div class="container__cards">
         {% for animal in animais %}
         <div class="pagAdocao__container-card">
-          <img src="{{url_for('imagem', nome_arquivo=foto_Animal)}}" alt="Foto {{animal.nome}}" style="width: 10em;"/>
+          <img
+            src="{{url_for('imagem', nome_arquivo=foto_Animal)}}"
+            alt="Foto {{animal.nome}}"
+            style="width: 10em"
+          />
           <input
             type="hidden"
             id="id_{{animal.nome}}"
@@ -171,7 +187,7 @@
           <button onclick="mostrarDescricao({{animal.nome}})">
             Conheça {{animal.nome}}
           </button>
-          </div>
+        </div>
 
         {% endfor %}
       </div>
@@ -217,12 +233,15 @@
     </div>
   </div>
 </footer>
-
+<script>
+  const usuarioLogado = "{{ session['usuario_logado'] }}";
+</script>
+<script src="{{ url_for('static', filename='usuarioLogado.js') }}"></script>
 <script>
   var listaAnimais = "{{ listaAnimais }}";
   console.log(listaAnimais);
 
-  const funcionario = "{{ funcionario }}";
+  const funcionario = "{{ session['Funcionario?'] }}";
   console.log(`É funcionario? ${funcionario}`);
 
   var link = document.getElementById("popupLink");

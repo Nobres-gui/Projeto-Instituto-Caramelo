@@ -4,12 +4,20 @@ from flask import render_template, request, redirect, session, flash, url_for, s
 from helpers import FormularioUsuarios, FormularioAnimais, recupera_imagem, deletaCapa;
 from flask_bcrypt import check_password_hash, generate_password_hash;
 import time;
-
-
+import logging;
+logging.basicConfig(level=logging.DEBUG);  # Define o nível mínimo de log como DEBUG
 
 @app.route("/")
 def index():
     return render_template("index.html");
+
+@app.route('/<pagina_id>')
+def index_detalhe(pagina_id):
+    # Aqui você pode usar o item_id para acessar informações do seu banco de dados, por exemplo
+    # Exemplo:
+    # item = get_item_from_database(item_id)
+    # return render_template('item_detail.html', item=item)
+    return render_template('index.html', pagina_id=pagina_id)
 
 @app.route("/cadastro")
 def cadastro():
@@ -47,10 +55,11 @@ def autenticar():
     usuario = Usuarios.query.filter_by(email=form.email.data).first();
     senha = check_password_hash(usuario.senha, form.senha.data);
     session["Funcionario?"] = usuario.funcionario;
+    session["usuario_logado"] = "sim";
     if usuario and senha:
-        session["usuario_logado"] = usuario.nome;
+        logging.debug(session["usuario_logado"]);
         proxima = request.form["proxima"];  
-        return redirect(url_for("adocao", funcionario=session["Funcionario?"]));
+        return redirect(url_for(proxima));
     else:
         proxima = request.form["proxima"];  
         # form.aviso.data = "Usuário ou senha inválidos";
@@ -60,7 +69,7 @@ def autenticar():
 def adocao():
     form = FormularioAnimais();
     if "usuario_logado" not in session or session["usuario_logado"] is None:
-        return redirect(url_for("login", proxima=url_for("adocao")));
+        return redirect(url_for("login", proxima="adocao"));
     animais_lista = Animais.query.order_by(Animais.idAnimal)
        
     for animais in animais_lista:
@@ -70,12 +79,12 @@ def adocao():
         "idade" : animaisLista.idade , 
         "tipo" : animaisLista.tipo , 
         "sexo" : animaisLista.sexo , 
-        "descricao" : animaisLista.descricao
+        "descricao" : animaisLista.descricao,
         }
         
         
     
-    return render_template("adocao.html", animais=animais_lista , funcionario=session["Funcionario?"], listaAnimais=listaAnimais, form=form)
+    return render_template("adocao.html", animais=animais_lista, listaAnimais=listaAnimais, form=form)
 
 
 @app.route("/novoAnimal", methods=["POST",])
