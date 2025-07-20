@@ -172,22 +172,25 @@
       </div>
 
       <div class="container__cards">
+
         {% for animal in animais %}
-        <div class="pagAdocao__container-card">
-          <img
-            src="{{url_for('imagem', nome_arquivo=foto_Animal)}}"
-            alt="Foto {{animal.nome}}"
-            style="width: 10em"
-          />
-          <input
-            type="hidden"
-            id="id_{{animal.nome}}"
-            value="Animal{{animal.id}}"
-          />
-          <button onclick="mostrarDescricao({{animal.nome}})">
-            Conheça {{animal.nome}}
-          </button>
-        </div>
+              <div class='pagAdocao__container-card'>
+              <div class='container__card-icons'>
+              <button class='btn-editar' onclick="abrirEditar(idAnimal, nome,idade, sexo, tipo, descricao)" style="color:blue;">
+              <i class='fa-solid fa-pen-to-square'></i> 
+              </button>
+              <a href="{{ url_for('apagarAnimal', idAnimal=animal.idAnimal ) }}" style='color:red;'>
+              <i class='fa-solid fa-trash' ></i>
+              </a>
+              </div>
+              <div class='container__card'>
+              <img src="{{url_for('imagem', nome_arquivo=foto_Animal)}}" alt='Foto {{animal.nome}}'/>
+              <input type="hidden" id="id_{{animal.nome}}" value="Animal{{animal.id}}">
+              <button class='pagAdocao__container-card-button' onclick= 'mostrarDescricao(nome,idade, sexo, tipo, descricao)'> 
+               Conheça 
+              </button>
+              </div>
+              </div>
 
         {% endfor %}
       </div>
@@ -260,5 +263,20 @@
   span.onclick = function () {
     popup.style.display = "none";
   };
+
+  var cardIcons = document.getElementsByClassName("container__card-icons");
+
+  if (funcionario == "não") {
+    link.style.display = "none";
+    for (var i = 0; i < cardIcons.length; i++) {
+      cardIcons[i].style.display = "none";
+    }
+  } else {
+    link.style.display = "flex";
+    for (var i = 0; i < cardIcons.length; i++) {
+      cardIcons[i].style.display = "flex";
+    }
+  }
+
 </script>
 {% endblock %}

@@ -11,14 +11,6 @@ logging.basicConfig(level=logging.DEBUG);  # Define o nível mínimo de log como
 def index():
     return render_template("index.html");
 
-@app.route('/<pagina_id>')
-def index_detalhe(pagina_id):
-    # Aqui você pode usar o item_id para acessar informações do seu banco de dados, por exemplo
-    # Exemplo:
-    # item = get_item_from_database(item_id)
-    # return render_template('item_detail.html', item=item)
-    return render_template('index.html', pagina_id=pagina_id)
-
 @app.route("/cadastro")
 def cadastro():
     form = FormularioUsuarios();
@@ -115,6 +107,15 @@ def novoAnimal():
 @app.route("/uploads/<nome_arquivo>")
 def imagem(nome_arquivo):
     return send_from_directory("uploads", nome_arquivo)
+
+@app.route("/apagarAnimal/<int:idAnimal>")
+def apagarAnimal(idAnimal):
+    if "usuario_logado" not in session or session["usuario_logado"] is None:
+        return redirect(url_for("login", proxima=url_for("apagarAnimal", idAnimal = idAnimal)));
+    Animais.query.filter_by(idAnimal=idAnimal).delete();
+    db.session.commit();
+    deletaCapa(idAnimal);
+    return redirect(url_for("adocao"));
 
 @app.route("/logout")
 def logout():
